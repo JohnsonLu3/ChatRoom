@@ -4,7 +4,8 @@
   "description": "Chat Room with Node.js Backend and React App Frontend",
   "main": "index.js",
   "scripts": {
-    "server" : "nodemon index.js",
+    "server" : "run index.js",
+    "dev" : "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,7 +16,9 @@
   "author": "Johnson Lu",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies":{
     "nodemon": "^2.0.2"
   }
 }

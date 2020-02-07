@@ -1,3 +1,5 @@
+let test = require("./test")
+
 let express = require("express");
 let app = express();
 let PORT = 3001;
@@ -25,3 +27,6 @@ app.post("/sendMessage", (req, res)=>{
 
     res.json(messages);
 })
+
+let test2 = new test();
+test2.sayHello();
