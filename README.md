@@ -9,6 +9,6 @@ A Node.js Server with React.js webapp ChatRoom
 
 # ToDo:
 * More chat messages into its own component
-* Fix user ID changing when ever the state changes
+* ~~Fix user ID changing when ever the state changes~~
 * Add custom user colors
 * Add message time stamp
