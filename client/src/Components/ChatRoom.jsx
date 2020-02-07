@@ -6,14 +6,12 @@ export default class ChatRoom extends React.Component {
         super(props);
 
         this.state = {
-            id: props.id,
-            messages: [],
-            inputMessage: ""
+            messages: []
         }
+        this.inputRef = React.createRef();
     }
 
     componentDidMount() {
-
         fetch('/getMessages')
             .then(res => res.json())
             .then(messages => {
@@ -21,36 +19,12 @@ export default class ChatRoom extends React.Component {
             })
     }
 
-    render() {
-        return (
-            <div id="chatroom" className="shadow">
-                <h1>Welcome, <span>{this.state.id}</span>!</h1>
-                <div id="messages">
-                    <ul>
-                        {this.state.messages.map((message, index) =>
-                            <li key={message[0] + index}><span className="username">{message[0]}:</span> {message[1]}</li>
-                        )}
-
-                    </ul>
-                </div>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <div id="chatbox">
-                        <label htmlFor="name">Message: </label>
-                        <input onChange={this.inputHandler.bind(this)} />
-                        <button type="submit">Send</button>
-                    </div>
-                </form>
-            </div>
-        )
-    }
-
-    handleSubmit() {
+    handleSubmit = (e) => {
         const data = {
-            user: this.state.id,
-            message: this.state.inputMessage,
+            user: this.props.id,
+            message: this.inputRef.current.value,
             time: Date.now()
         };
-        console.log(data);
         const options = {
             method: "POST",
             header: {
@@ -59,14 +33,39 @@ export default class ChatRoom extends React.Component {
             body: JSON.stringify(data)
         }
         fetch("/sendMessage", options)
+            .then(res => res.json())
             .then(messages => {
+                console.log(":::" + messages)
                 this.setState({
                     messages: messages
                 })
+                this.inputRef.current.value = "";
             })
+        e.preventDefault();
     }
 
-    inputHandler(event) {
-        this.setState({ inputMessage: event.target.value })
+    render() {
+        return (
+            <div id="chatroom" className="shadow">
+                <h1>Welcome, <span>{this.props.id}</span>!</h1>
+                <div id="messages">
+                    <ul>
+                        {
+                            this.state.messages.map((message, index) =>
+                                <li key={message[0] + index}>
+                                    <span className="username">{message[0]}:</span> {message[1]}
+                                </li>)
+                        }
+                    </ul>
+                </div>
+                <form onSubmit={this.handleSubmit}>
+                    <div id="chatbox">
+                        <label htmlFor="name">Message: </label>
+                        <input ref={this.inputRef} />
+                        <button>Send</button>
+                    </div>
+                </form>
+            </div>
+        )
     }
 }

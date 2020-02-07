@@ -9,7 +9,7 @@ let messages = [welcomeMessage];
 app.use(express.json({
     limit : '1mb',
     type: ['application/json', 'text/plain']
-}))
+}));
 
 app.get("/getMessages", (req, res)=>{
     console.log("request for Messages");
