@@ -3,7 +3,7 @@ let app = express();
 let PORT = 3001;
 app.listen(PORT,()=>{console.log("Listen on port  " + PORT)})
 
-let welcomeMessage = ["ChatBot","Welcome to the ChatRoom"];
+let welcomeMessage = ["ChatBot","Welcome to the ChatRoom!"];
 let messages = [welcomeMessage];
 
 app.use(express.json({

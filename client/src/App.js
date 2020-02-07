@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import ChatRoom from "./Components/ChatRoom"
 function App() {
   let userID = Math.floor(Math.random() * 100000000);
 
   return (
-    <div className="App">
+    <main className="App">
       <ChatRoom id={userID}></ChatRoom>
-    </div>
+    </main>
   );
 }
 

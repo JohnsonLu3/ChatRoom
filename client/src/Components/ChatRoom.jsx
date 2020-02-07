@@ -17,25 +17,28 @@ export default class ChatRoom extends React.Component {
         fetch('/getMessages')
             .then(res => res.json())
             .then(messages => {
-                this.setState({messages : messages})
+                this.setState({ messages: messages })
             })
     }
 
     render() {
         return (
-            <div>
-                <div>
+            <div id="chatroom" className="shadow">
+                <h1>Welcome, <span>{this.state.id}</span>!</h1>
+                <div id="messages">
                     <ul>
-                        {this.state.messages.map((message,index) => 
-                            <li key={message[0] + index}>{message[0]}: {message[1]}</li>
+                        {this.state.messages.map((message, index) =>
+                            <li key={message[0] + index}><span className="username">{message[0]}:</span> {message[1]}</li>
                         )}
 
                     </ul>
                 </div>
                 <form onSubmit={this.handleSubmit.bind(this)}>
-                    <label htmlFor="name">Message: </label>
-                    <input onChange={this.inputHandler.bind(this)}/>
-                    <button type="submit">Send</button>
+                    <div id="chatbox">
+                        <label htmlFor="name">Message: </label>
+                        <input onChange={this.inputHandler.bind(this)} />
+                        <button type="submit">Send</button>
+                    </div>
                 </form>
             </div>
         )
@@ -43,27 +46,27 @@ export default class ChatRoom extends React.Component {
 
     handleSubmit() {
         const data = {
-            user : this.state.id,
-            message : this.state.inputMessage,
-            time : Date.now()
+            user: this.state.id,
+            message: this.state.inputMessage,
+            time: Date.now()
         };
         console.log(data);
         const options = {
-            method : "POST",
-            header : {
-                'Content-Type' : 'application/json'
+            method: "POST",
+            header: {
+                'Content-Type': 'application/json'
             },
-            body : JSON.stringify(data)
+            body: JSON.stringify(data)
         }
         fetch("/sendMessage", options)
             .then(messages => {
                 this.setState({
-                    messages : messages
+                    messages: messages
                 })
             })
     }
 
-    inputHandler(event){
-        this.setState({inputMessage : event.target.value})
+    inputHandler(event) {
+        this.setState({ inputMessage: event.target.value })
     }
 }
