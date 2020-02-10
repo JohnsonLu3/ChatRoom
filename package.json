@@ -4,7 +4,7 @@
   "description": "Chat Room with Node.js Backend and React App Frontend",
   "main": "index.js",
   "scripts": {
-    "server" : "run index.js",
+    "server" : "node index.js",
     "dev" : "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
