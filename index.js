@@ -1,5 +1,3 @@
-let test = require("./test")
-
 let express = require("express");
 let app = express();
 let PORT = 3001;
@@ -14,7 +12,6 @@ app.use(express.json({
 }));
 
 app.get("/getMessages", (req, res)=>{
-    console.log("request for Messages");
     res.json(messages);
 });
 

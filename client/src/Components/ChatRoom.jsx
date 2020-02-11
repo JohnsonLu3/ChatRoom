@@ -1,4 +1,5 @@
 import React from "react"
+import ChatBox from "./ChatBox"
 
 export default class ChatRoom extends React.Component {
 
@@ -8,40 +9,16 @@ export default class ChatRoom extends React.Component {
         this.state = {
             messages: []
         }
-        this.inputRef = React.createRef();
     }
 
     componentDidMount() {
-        fetch('/getMessages')
+        setInterval(()=>{
+            fetch('/getMessages')
             .then(res => res.json())
             .then(messages => {
                 this.setState({ messages: messages })
             })
-    }
-
-    handleSubmit = (e) => {
-        const data = {
-            user: this.props.id,
-            message: this.inputRef.current.value,
-            time: Date.now()
-        };
-        const options = {
-            method: "POST",
-            header: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }
-        fetch("/sendMessage", options)
-            .then(res => res.json())
-            .then(messages => {
-                console.log(":::" + messages)
-                this.setState({
-                    messages: messages
-                })
-                this.inputRef.current.value = "";
-            })
-        e.preventDefault();
+        }, 500)
     }
 
     render() {
@@ -58,13 +35,7 @@ export default class ChatRoom extends React.Component {
                         }
                     </ul>
                 </div>
-                <form onSubmit={this.handleSubmit}>
-                    <div id="chatbox">
-                        <label htmlFor="name">Message: </label>
-                        <input ref={this.inputRef} />
-                        <button>Send</button>
-                    </div>
-                </form>
+                <ChatBox id={this.props.id}/>
             </div>
         )
     }
