@@ -11,7 +11,7 @@ export default class ChatBox extends Component {
         const data = {
             user: this.props.id,
             message: this.inputRef.current.value,
-            time: Date.now()
+            timestamp: new Date().toDateString()
         };
         const options = {
             method: "POST",

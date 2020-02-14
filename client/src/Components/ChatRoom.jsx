@@ -29,8 +29,9 @@ export default class ChatRoom extends React.Component {
                     <ul>
                         {
                             this.state.messages.map((message, index) =>
-                                <li key={message[0] + index}>
-                                    <span className="username">{message[0]}:</span> {message[1]}
+                                <li className="message" key={message.username + index}>
+                                    <span className="username">{message.username}:</span> {message.message}
+                                    <div className="timestamp">{message.timestamp}</div>
                                 </li>)
                         }
                     </ul>
