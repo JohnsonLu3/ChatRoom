@@ -3,6 +3,7 @@ class User{
         this.color = "#7fdbff";
         this.userName = userName;
         this.id = id;
-        this.joined = new Date("YYYY/MM/DD HH:MM:SS");
+        const date = new Date();
+        this.joined = date.toUTCString();
     }
 }module.exports = User

@@ -21,4 +21,4 @@ let welcomeMessage = {
 let messages = [welcomeMessage];
 
 let HttpRequestController = require("./Controller/HttpRequestController");
-new HttpRequestController(app,express,messages);
+new HttpRequestController(app,express,messages,userList);

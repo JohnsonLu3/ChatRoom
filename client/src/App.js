@@ -1,12 +1,24 @@
 import React from 'react';
 import './App.scss';
 import ChatRoom from "./Components/ChatRoom"
+import axios from "axios";
+
 class App extends React.Component{
   
   constructor(){
     super();
     const userID = Math.floor(Math.random() * 100000000);
-    this.state = {userID}
+    const userName = `Guest_${userID}`;
+    this.state = {userID,userName}
+  }
+
+  componentDidMount(){
+    axios.post("/createUser", {
+      user : {
+        id: this.state.userID,
+        userName: this.state.userName,
+      }
+    })
   }
   
   render(){
