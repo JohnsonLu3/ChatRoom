@@ -17,12 +17,12 @@ export default class ChatBox extends Component {
         };
 
         axios.post("/sendMessage", data)
-        .then(()=>{
-            this.inputRef.current.value = ""
-        })
-        .catch((err) =>{
-            throw err;
-        })
+            .then(() => {
+                this.inputRef.current.value = ""
+            })
+            .catch((err) => {
+                throw err;
+            })
     }
 
     render() {

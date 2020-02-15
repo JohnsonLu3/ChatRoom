@@ -13,21 +13,21 @@ export default class ChatRoom extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(()=>{
+        setInterval(() => {
             fetch('/getMessages')
-            .then(res => res.json())
-            .then(messages => {
-                this.setState({ messages: messages })
-            })
+                .then(res => res.json())
+                .then(messages => {
+                    this.setState({ messages: messages })
+                })
         }, 500)
-    } 
+    }
 
     render() {
         return (
             <div id="chatroom" className="shadow">
-                <h1>Welcome, 
+                <h1>Welcome,
                     <span id="userName">{this.props.user.userName}</span>!
-                    <ColorPickerIcon/>
+                    <ColorPickerIcon />
                 </h1>
                 <div id="messages">
                     <ul>
@@ -40,7 +40,7 @@ export default class ChatRoom extends React.Component {
                         }
                     </ul>
                 </div>
-                <ChatBox user={this.props.user}/>
+                <ChatBox user={this.props.user} />
             </div>
         )
     }

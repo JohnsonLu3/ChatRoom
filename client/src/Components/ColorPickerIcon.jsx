@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default class ColorPickerIcon extends React.Component{
+export default class ColorPickerIcon extends React.Component {
 
-    componentDidMount(){
+    componentDidMount() {
 
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div id="colorPickerButton">
                 <span className="sr">Username color picker</span>
                 <div className="colorCircle cpb_red"></div>
