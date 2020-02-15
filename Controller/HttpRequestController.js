@@ -12,13 +12,12 @@ class HttpRequestController{
             limit: '1mb',
             type: ['application/json', 'text/plain']
         }));
-        
 
         this.setGetRequest();
+        this.setPostRequest();
     }
 
     setGetRequest(){
-       
         this.app.get("/getMessages", (req, res) => {
             res.json(this.messages);
         });
@@ -27,13 +26,13 @@ class HttpRequestController{
     
     setPostRequest(){
         this.app.post("/sendMessage", (req, res) => {
-            const user = req.body.user;
-            const message = req.body.message;
-            console.log("receiving message => " + user + " : " + message);
+            const {user, message, timestamp} = req.body;
+            console.log("receiving message => " + user.userName + " : " + message + " : " + timestamp);
             this.messages.push({
-                username: req.body.user, 
-                message: req.body.message, 
-                timestamp: req.body.timestamp
+                id: Math.floor(Math.random() * 100000000),
+                username: user.userName, 
+                message: message, 
+                timestamp: timestamp
             });
         
             res.json(this.messages);
@@ -47,5 +46,5 @@ class HttpRequestController{
             res.end();
         })
     }
-    
+
 }module.exports = HttpRequestController;

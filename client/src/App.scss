@@ -3,6 +3,14 @@ body {
   color: white;
 }
 
+.sr{
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+}
+
 .shadow {
   -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.28);
   -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.28);
@@ -19,6 +27,31 @@ body {
     span {
       color: rgb(127, 219, 255);
     }
+
+    display: flex;
+  }
+}
+
+#colorPickerButton{
+
+  padding: 5px;
+
+  .colorCircle{
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+  }
+  .cpb_red{
+    background-color: rgb(218, 65, 65);
+  }
+
+  .cpb_blue{
+    background-color: rgb(85, 114, 192);
+    margin: 0 15px;
+  }
+
+  .cpb_green{
+    background-color: rgb(76, 196, 126);
   }
 }
 

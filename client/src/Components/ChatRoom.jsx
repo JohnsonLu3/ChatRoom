@@ -1,5 +1,6 @@
 import React from "react"
 import ChatBox from "./ChatBox"
+import ColorPickerIcon from "./ColorPickerIcon"
 
 export default class ChatRoom extends React.Component {
 
@@ -19,12 +20,15 @@ export default class ChatRoom extends React.Component {
                 this.setState({ messages: messages })
             })
         }, 500)
-    }
+    } 
 
     render() {
         return (
             <div id="chatroom" className="shadow">
-                <h1>Welcome, <span>{this.props.id}</span>!</h1>
+                <h1>Welcome, 
+                    <span id="userName">{this.props.user.userName}</span>!
+                    <ColorPickerIcon/>
+                </h1>
                 <div id="messages">
                     <ul>
                         {
@@ -36,7 +40,7 @@ export default class ChatRoom extends React.Component {
                         }
                     </ul>
                 </div>
-                <ChatBox id={this.props.id}/>
+                <ChatBox user={this.props.user}/>
             </div>
         )
     }

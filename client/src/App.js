@@ -9,14 +9,15 @@ class App extends React.Component{
     super();
     const userID = Math.floor(Math.random() * 100000000);
     const userName = `Guest_${userID}`;
-    this.state = {userID,userName}
+    const user = {userID,userName}
+    this.state = {user}
   }
 
   componentDidMount(){
     axios.post("/createUser", {
       user : {
-        id: this.state.userID,
-        userName: this.state.userName,
+        id: this.state.user.userID,
+        userName: this.state.user.userName,
       }
     })
   }
@@ -24,7 +25,7 @@ class App extends React.Component{
   render(){
     return (
       <main className="App">
-        <ChatRoom id={this.state.userID}></ChatRoom>
+        <ChatRoom user={this.state.user}></ChatRoom>
       </main>
     );
   }

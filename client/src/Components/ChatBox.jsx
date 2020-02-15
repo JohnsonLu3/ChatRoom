@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class ChatBox extends Component {
 
@@ -8,27 +9,20 @@ export default class ChatBox extends Component {
     }
 
     handleSubmit = (e) => {
+        e.preventDefault();
         const data = {
-            user: this.props.id,
+            user: this.props.user,
             message: this.inputRef.current.value,
             timestamp: new Date().toDateString()
         };
-        const options = {
-            method: "POST",
-            header: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }
-        fetch("/sendMessage", options)
-            .then(res => res.json())
-            .then(messages => {
-                this.setState({
-                    messages: messages
-                })
-                this.inputRef.current.value = "";
-            })
-        e.preventDefault();
+
+        axios.post("/sendMessage", data)
+        .then(()=>{
+            this.inputRef.current.value = ""
+        })
+        .catch((err) =>{
+            throw err;
+        })
     }
 
     render() {
@@ -36,9 +30,9 @@ export default class ChatBox extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <div id="chatbox">
-                        <label htmlFor="name">Message: </label>
+                        <label htmlFor="Message">Message: </label>
                         <input ref={this.inputRef} />
-                        <button>Send</button>
+                        <button type="submit">Send</button>
                     </div>
                 </form>
             </div>
