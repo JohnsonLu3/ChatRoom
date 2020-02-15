@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import axios from 'axios'
 
-export default class ChatBox extends Component {
+class ChatBox extends Component {
 
     constructor(props) {
         super(props);
@@ -25,6 +26,8 @@ export default class ChatBox extends Component {
             })
     }
 
+
+
     render() {
         return (
             <div>
@@ -39,3 +42,10 @@ export default class ChatBox extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(ChatBox)

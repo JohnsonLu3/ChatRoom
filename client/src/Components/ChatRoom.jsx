@@ -1,8 +1,9 @@
 import React from "react"
 import ChatBox from "./ChatBox"
 import ColorPickerIcon from "./ColorPickerIcon"
+import { connect } from "react-redux"
 
-export default class ChatRoom extends React.Component {
+class ChatRoom extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,10 +23,11 @@ export default class ChatRoom extends React.Component {
         }, 500)
     }
 
+
     render() {
         return (
             <div id="chatroom" className="shadow">
-                <h1>Welcome,
+                <h1>Welcome,&nbsp;
                     <span id="userName">{this.props.user.userName}</span>!
                     <ColorPickerIcon />
                 </h1>
@@ -45,3 +47,12 @@ export default class ChatRoom extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(ChatRoom)
+

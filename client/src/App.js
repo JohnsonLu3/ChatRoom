@@ -2,9 +2,9 @@ import React from 'react';
 import './App.scss';
 import ChatRoom from "./Components/ChatRoom"
 import axios from "axios";
-import {createStore} from "redux";
-import rootReducer from './Reducers/RootReducer';
-import userAction from './Actions/UserActions';
+import store from "./Store"
+import { Provider } from 'react-redux'
+
 class App extends React.Component {
 
   constructor() {
@@ -13,7 +13,6 @@ class App extends React.Component {
     const userName = `Guest_${userID}`;
     const user = { userID, userName }
     this.state = { user }
-    const store = createStore(rootReducer());
     console.log(store.getState())
   }
 
@@ -28,9 +27,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <main className="App">
-        <ChatRoom user={this.state.user}></ChatRoom>
-      </main>
+      <Provider store={store}>
+        <main className="App">
+          <ChatRoom />
+        </main>
+      </Provider>
     );
   }
 }
