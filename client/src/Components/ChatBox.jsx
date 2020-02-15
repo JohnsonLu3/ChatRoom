@@ -26,8 +26,6 @@ class ChatBox extends Component {
             })
     }
 
-
-
     render() {
         return (
             <div>

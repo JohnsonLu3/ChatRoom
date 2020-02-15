@@ -3,7 +3,7 @@ body {
   color: white;
 }
 
-.sr{
+.sr {
   height: 1px;
   width: 1px;
   position: absolute;
@@ -12,9 +12,9 @@ body {
 }
 
 .shadow {
-  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.28);
-  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.28);
-  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.28);
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.28);
+  box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.28);
 }
 
 #chatroom {
@@ -32,30 +32,29 @@ body {
   }
 }
 
-#colorPickerButton{
-
+#colorPickerButton {
   padding: 5px;
 
-  .colorCircle{
+  .colorCircle {
     height: 10px;
     width: 10px;
     border-radius: 100%;
   }
-  .cpb_red{
+  .cpb_red {
     background-color: rgb(218, 65, 65);
   }
 
-  .cpb_blue{
+  .cpb_blue {
     background-color: rgb(85, 114, 192);
     margin: 0 15px;
   }
 
-  .cpb_green{
+  .cpb_green {
     background-color: rgb(76, 196, 126);
   }
 }
 
-.timestamp{
+.timestamp {
   font-style: initial;
   font-weight: 200;
   font-size: 12px;
@@ -63,7 +62,7 @@ body {
   opacity: 0;
 }
 
-.message:hover .timestamp{
+.message:hover .timestamp {
   opacity: 1;
 }
 
@@ -87,14 +86,14 @@ body {
 }
 
 #messages::-webkit-scrollbar {
-  width: .5em;
+  width: 0.5em;
 }
- 
+
 #messages::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(48, 48, 48, 0.589);
   border-radius: 10px;
 }
- 
+
 #messages::-webkit-scrollbar-thumb {
   background-color: rgb(196, 101, 196);
   border-radius: 10px;
@@ -103,7 +102,7 @@ body {
 
 #chatbox {
   font-size: 21px;
-  label{
+  label {
     width: 10%;
   }
 

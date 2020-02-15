@@ -1,7 +1,7 @@
-import {combineReducers} from "redux"
+import { combineReducers } from "redux"
 import userReducer from "./UserReducer"
 
-const rootReducer = () =>{
+const rootReducer = () => {
     return combineReducers({
         user: userReducer
     })
