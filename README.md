@@ -8,7 +8,7 @@ A Node.js Server with React.js webapp ChatRoom
 3. npm run start (runs client on port 3000)
 
 # ToDo:
-* More chat messages into its own component
+* ~~Move chat messages into its own component~~
 * ~~Fix user ID changing when ever the state changes~~
 * Add custom user colors
 * ~~Add message time stamp~~
